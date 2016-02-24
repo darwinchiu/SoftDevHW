@@ -1,0 +1,21 @@
+var c = document.getElementById("canvas");
+var ctx = c.getContext("2d");
+var image = new Image();
+var button = document.getElementById("dvd");
+
+var xcor = 0;
+var ycor = 0;
+image.src = "DVD_Logo.jpg";
+
+var dvd = function() {
+
+    xcor += 1;
+    ycor += 1;
+
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.beginPath();
+    ctx.drawImage(image,xcor,ycor,100,100);
+
+};
+
+
