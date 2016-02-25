@@ -1,37 +1,34 @@
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
-var image = new Image();
 var button = document.getElementById("dvd");
 
 var xcor = c.width/2;
 var ycor = c.height/2;
+var x = 1;
+var y = 1;
+var image = new Image();
 image.src = "DVD_Logo.jpg";
+var frameid;
 
 var dvd = function() {
-    var x;
-    var y;
+    window.cancelAnimationFrame(frameid);
     
-    if (xcor = c.width) {
-	x = -1;
-    }
-    if (xcor = 0) {
-	x = 1;
-    }
-    if (ycor = c.height) {
-	y = -1;
-    }
-    if (ycor = 0) {
-	y = 1;
-    }
-
-    xcor += x;
-    ycor += y;
-
-    ctx.clearRect(0,0,c.width,c.height);
+    ctx.clearRect(0, 0, c.width, c.height);
     ctx.beginPath();
     ctx.drawImage(image,xcor,ycor,100,100);
 
-    window.requestAnimationFrame(dvd);
+    xcor += x;
+    ycor += y;
+    
+    if(xcor <= 5 || xcor >= 325){
+	x = -x;
+    }
+    if(ycor <= 5|| ycor >= 380){
+	y = -y;
+
+    }
+
+    frameid = window.requestAnimationFrame(dvd);
 
 };
 
