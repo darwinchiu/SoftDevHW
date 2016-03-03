@@ -1,6 +1,7 @@
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 var button = document.getElementById("dvd");
+var sbutton = document.getElementById("stop");
 
 var xcor = c.width/2;
 var ycor = c.height/2;
@@ -32,6 +33,9 @@ var dvd = function() {
 
 };
 
+var stop = function() {
+    window.cancelAnimationFrame(frameid);
+};
+
 button.addEventListener("click",dvd);
-
-
+sbutton.addEventListener("click",stop);
